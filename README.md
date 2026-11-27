@@ -6,7 +6,7 @@ Catálogo de producción científica universitaria del **Grupo 6**, Proyecto 7 d
 
 - [Informe técnico](documentacion/SGBD_TRABAJOFINALNOSQL_GRUPO6.docx)
 - [Evidencias de implementación y rendimiento](documentacion/evidencias/)
-- [Resultados del benchmark](resultados-rendimiento.json)
+- [Resultados del benchmark](documentacion/resultados-rendimiento.json)
 
 ## Arranque local
 
@@ -29,17 +29,10 @@ La entrega se verificó con Node.js 26.13.1 y ArangoDB 3.12.14 en Docker Desktop
 
 ## Rendimiento
 
-Con ArangoDB activo y `ARANGO_PASSWORD` configurada, ejecuta:
-
-```powershell
-node rendimiento.cjs
-```
-
-La prueba usa las bases separadas `agora_bench_1000` y `agora_bench_10000`. Mide la latencia HTTP local de publicaciones por investigador, publicaciones por universidad y coautoría. La ejecución actualiza `resultados-rendimiento.json`.
+La sección 7 del informe describe las pruebas con 1 000 y 10 000 publicaciones. Las mediciones originales están en [documentacion/resultados-rendimiento.json](documentacion/resultados-rendimiento.json).
 
 ## Estructura
 
 - `server.cjs` sirve la interfaz y ejecuta las consultas AQL.
 - `public/` contiene HTML, CSS y JavaScript separados.
-- `prototipo-diseno-final.html` permite revisar el diseño con datos simulados.
 - `documentacion/` contiene el informe y las evidencias de la entrega.
