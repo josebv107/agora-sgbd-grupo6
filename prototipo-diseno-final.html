@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ágora · Prototipo del catálogo científico</title>
+<style>
+:root{font:16px/1.5 system-ui,sans-serif;color:#182f33;background:#f5f5ee;--green:#12594e;--line:#d7ded5;--muted:#536762}*{box-sizing:border-box}body{margin:0}a{color:var(--green)}button,input,select,textarea{font:inherit}button,a,input,select,textarea{outline-offset:4px}button{cursor:pointer}.shell{max-width:1160px;margin:auto;padding:0 28px}.top{background:#112f32;color:#fff;border-bottom:4px solid #cde798}.top .shell{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;flex-wrap:wrap}.brand{font:700 27px Georgia,serif;color:#fff;text-decoration:none}.top nav{display:flex;gap:7px;flex-wrap:wrap}.top nav a{color:#d9e6df;text-decoration:none;padding:8px 13px;border-radius:7px}.top nav a[aria-current]{background:#cde798;color:#112f32;font-weight:700}.demo{background:#e7ecd9;color:#33483d;padding:7px 0;font-size:.83rem}.hero{padding:42px 0 25px}.hero h1{font:700 clamp(2.1rem,5vw,3.65rem)/1.04 Georgia,serif;margin:0 0 12px;letter-spacing:-.045em}.hero p,p.muted{color:var(--muted);margin:0}.toolbar{display:grid;grid-template-columns:2fr 1.1fr 1fr 1.35fr;gap:14px}.box,.card{background:#fffefa;border:1px solid var(--line);border-radius:14px;padding:20px}.stack{display:grid;gap:12px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,245px),1fr));gap:14px}.content{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px}.manage{display:grid;grid-template-columns:205px minmax(0,1fr);gap:18px}.side a{display:block;text-decoration:none;padding:9px 12px;border-radius:6px}.side a[aria-current]{background:#dfeddd;font-weight:700}label{display:grid;gap:5px;font-size:.9rem;font-weight:650}input,select,textarea{width:100%;min-width:0;background:#fff;color:#182f33;border:1px solid #a9bab0;border-radius:7px;padding:9px 10px}.card h2,.card h3,.box h2,.box h3{margin:0 0 8px;line-height:1.25}.card h2{font-size:1.16rem}.card h3{font-size:1rem}.card a{font-weight:700;text-underline-offset:3px}.pill{display:inline-block;background:#e3eee3;color:#244c42;border-radius:50px;padding:3px 9px;font-size:.8rem;margin:0 6px 8px 0}.meta{color:var(--muted);font-size:.9rem;margin:6px 0}.count{font-size:.9rem;color:var(--muted);margin:14px 0}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.avatar{display:grid;place-items:center;width:42px;height:42px;background:#dbe9d2;color:#235244;border-radius:50%;font-weight:750}.primary,.secondary{border:1px solid var(--green);border-radius:7px;padding:8px 13px}.primary{background:var(--green);color:white}.secondary{background:white;color:var(--green)}.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.wide{grid-column:1/-1}.selected{display:flex;gap:6px;flex-wrap:wrap}.selected button{font-size:.82rem}.matching{display:grid;gap:5px}.matching button{text-align:left}.empty{color:var(--muted)}.back{display:inline-block;margin-bottom:13px}.card ul,.box ul{padding-left:1.2rem;margin:.5rem 0}.status{color:var(--green);font-weight:700}main{padding-bottom:60px!important}footer{border-top:1px solid var(--line);padding:16px 0;color:var(--muted);font-size:.85rem}@media(max-width:820px){.toolbar{grid-template-columns:1fr 1fr}.content{grid-template-columns:1fr}}@media(max-width:570px){.shell{padding:0 16px}.top .shell{padding-top:10px;padding-bottom:12px}.hero{padding-top:26px}.toolbar,.manage,.fields{grid-template-columns:1fr}.side{display:flex;flex-wrap:wrap;gap:4px}}
+</style></head>
+<body><header class="top"><div class="shell"><a class="brand" href="#publicaciones">Ágora</a><nav aria-label="Principal"><a href="#publicaciones">Publicaciones</a><a href="#investigadores">Investigadores</a><a href="#gestion">Gestión</a></nav></div></header>
+<div class="demo"><div class="shell">Prototipo de diseño · Datos de ejemplo · Los registros de prueba se conservan durante esta sesión.</div></div>
+<main id="app" class="shell"></main><footer><div class="shell">Catálogo de producción científica · Proyecto 7 · Grupo 6</div></footer>
+<script>
+const db={
+ universidades:[{id:'andina',nombre:'Universidad Andina'},{id:'pacifico',nombre:'Universidad del Pacífico Sur'},{id:'norte',nombre:'Universidad del Norte'}],
+ investigadores:[{id:'ana',nombre:'Ana Torres',universidad:'andina'},{id:'luis',nombre:'Luis Rojas',universidad:'pacifico'},{id:'carla',nombre:'Carla Mendoza',universidad:'norte'}],
+ revistas:[{id:'revista',nombre:'Revista de Tecnología Aplicada'}],
+ congresos:[{id:'congreso',nombre:'Congreso de Ciudades Inteligentes'}],
+ areas:[{id:'ambiente',nombre:'Tecnología ambiental'},{id:'datos',nombre:'Ciencia de datos'}],
+ publicaciones:[
+ {id:'sensores',titulo:'Análisis de sensores urbanos',tipo:'Artículo',anio:'2025',autores:['ana','luis'],medio:'congreso',area:'datos',resumen:'Estudio sobre el uso de sensores para capturar y analizar mediciones en entornos urbanos.'},
+ {id:'aire',titulo:'Monitoreo de calidad del aire',tipo:'Artículo',anio:'2024',autores:['ana','luis'],medio:'revista',area:'ambiente',resumen:'Evaluación de mediciones ambientales y su variación en distintos puntos de observación.'},
+ {id:'tesis',titulo:'Visualización de indicadores ambientales',tipo:'Tesis',anio:'2025',autores:['carla'],medio:'',area:'ambiente',resumen:'Propuesta de un tablero para explorar y comparar indicadores ambientales.'}]
+};
+const app=document.querySelector('#app');
+const label={publicaciones:'Publicación',investigadores:'Investigador',universidades:'Universidad',revistas:'Revista',congresos:'Congreso',areas:'Área de investigación'};
+const esc=value=>String(value??'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const normal=value=>String(value??'').toLocaleLowerCase('es').normalize('NFD').replace(/\p{M}/gu,'');
+const get=(group,id)=>db[group].find(item=>item.id===id);
+const nombre=(group,id)=>get(group,id)?.nombre||'';
+const link=(group,id,text)=>'<a href="#'+group+'/'+encodeURIComponent(id)+'">'+esc(text)+'</a>';
+const hero=(title,sub='',back='')=>'<header class="hero">'+back+'<h1>'+esc(title)+'</h1>'+(sub?'<p>'+esc(sub)+'</p>':'')+'</header>';
+const empty=text=>'<p class="empty">'+esc(text)+'</p>';
+const options=(group,placeholder)=>'<option value="">'+esc(placeholder)+'</option>'+db[group].map(item=>'<option value="'+esc(item.id)+'">'+esc(item.nombre)+'</option>').join('');
+function pubCard(p){
+ return '<article class="card"><span class="pill">'+esc(p.tipo)+'</span><span class="meta">'+esc(p.anio)+'</span><h2>'+link('publicaciones',p.id,p.titulo)+'</h2><p class="meta">'+p.autores.map(id=>link('investigadores',id,nombre('investigadores',id))).join(' · ')+'</p><p class="meta">'+esc(nombre('areas',p.area))+'</p></article>';
+}
+function catalogo(){
+ app.innerHTML=hero('Publicaciones','Explora artículos y tesis por título, autor o universidad.')+'<div class="box toolbar"><label>Título<input id="titulo" type="search" placeholder="Buscar publicaciones"></label><label>Tipo<select id="tipo"><option value="">Todos</option><option>Artículo</option><option>Tesis</option></select></label><label>Investigador<select id="autor">'+options('investigadores','Todos')+'</select></label><label>Universidad<select id="uni">'+options('universidades','Todas')+'</select></label></div><p class="count" id="count" role="status"></p><div class="stack" id="resultados"></div>';
+ const update=()=>{
+  const read=id=>app.querySelector('#'+id).value;
+  const matches=db.publicaciones.filter(p=>normal(p.titulo).includes(normal(read('titulo').trim()))&&(!read('tipo')||p.tipo===read('tipo'))&&(!read('autor')||p.autores.includes(read('autor')))&&(!read('uni')||p.autores.some(id=>get('investigadores',id)?.universidad===read('uni'))));
+  app.querySelector('#count').textContent=matches.length+(matches.length===1?' publicación':' publicaciones');
+  app.querySelector('#resultados').innerHTML=matches.map(pubCard).join('')||empty('No hay publicaciones con esos filtros.');
+ };
+ app.querySelector('#titulo').addEventListener('input',update);
+ for(const select of app.querySelectorAll('select'))select.addEventListener('change',update);
+ update();
+}
+function directorio(){
+ app.innerHTML=hero('Investigadores','Encuentra a un investigador y abre su perfil para explorar sus trabajos.')+'<div class="box"><label>Nombre o universidad<input id="persona" type="search" placeholder="Ej. Ana Torres"></label></div><p class="count" id="count" role="status"></p><div class="grid" id="personas"></div>';
+ const input=app.querySelector('#persona');
+ function update(){
+  const found=db.investigadores.filter(p=>normal(p.nombre+' '+nombre('universidades',p.universidad)).includes(normal(input.value.trim()))).sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));
+  app.querySelector('#count').textContent=found.length+(found.length===1?' investigador':' investigadores');
+  app.querySelector('#personas').innerHTML=found.map(p=>'<article class="card row"><span class="avatar" aria-hidden="true">'+esc(p.nombre.split(/\s+/).slice(0,2).map(part=>part[0]).join('').toUpperCase())+'</span><div><h3>'+link('investigadores',p.id,p.nombre)+'</h3><p class="meta">'+esc(nombre('universidades',p.universidad))+'</p></div></article>').join('')||empty('No se encontraron investigadores.');
+ }
+ input.addEventListener('input',update);update();
+}
+function ficha(id){
+ const p=get('publicaciones',id);
+ if(!p){app.innerHTML=hero('Publicación no encontrada','', '<a class="back" href="#publicaciones">Volver a Publicaciones</a>');return;}
+ const medio=nombre('revistas',p.medio)||nombre('congresos',p.medio);
+ app.innerHTML=hero(p.titulo,p.tipo+' · '+p.anio,'<a class="back" href="#publicaciones">← Volver a Publicaciones</a>')+
+ '<div class="content"><section class="box"><h2>Resumen</h2><p>'+esc(p.resumen||'Sin resumen registrado.')+'</p><h3>Metadatos</h3><p class="meta">'+esc([medio,nombre('areas',p.area)].filter(Boolean).join(' · ')||'Sin metadatos adicionales.')+'</p></section><section class="box"><h2>Autores</h2><ul>'+p.autores.map(id=>'<li>'+link('investigadores',id,nombre('investigadores',id))+'<p class="meta">'+esc(nombre('universidades',get('investigadores',id)?.universidad))+'</p></li>').join('')+'</ul></section></div>';
+}
+function perfil(id){
+ const p=get('investigadores',id);
+ if(!p){app.innerHTML=hero('Investigador no encontrado','', '<a class="back" href="#investigadores">Volver a Investigadores</a>');return;}
+ const obras=db.publicaciones.filter(item=>item.autores.includes(id));
+ const colegas=new Map();
+ for(const obra of obras)for(const otro of obra.autores){if(otro===id)continue;if(!colegas.has(otro))colegas.set(otro,[]);colegas.get(otro).push(obra);}
+ app.innerHTML=hero(p.nombre,nombre('universidades',p.universidad),'<a class="back" href="#investigadores">← Volver a Investigadores</a>')+
+ '<div class="content"><section><h2>Publicaciones</h2><div class="stack">'+(obras.map(pubCard).join('')||empty('Aún no tiene publicaciones.'))+'</div></section><section><h2>Colaboradores</h2><div class="stack">'+([...colegas].map(([autor,trabajos])=>'<article class="card"><h3>'+link('investigadores',autor,nombre('investigadores',autor))+'</h3><p class="meta">'+trabajos.length+(trabajos.length===1?' publicación compartida':' publicaciones compartidas')+'</p><ul>'+trabajos.map(o=>'<li>'+link('publicaciones',o.id,o.titulo)+'</li>').join('')+'</ul></article>').join('')||empty('Aún no tiene colaboraciones.'))+'</div></section></div>';
+}
+function gestion(group){
+ if(!Object.hasOwn(label,group))group='publicaciones';
+ const selected=new Set();
+ const publicacion=group==='publicaciones';
+ const optsMedio='<option value="">Sin medio</option>'+['revistas','congresos'].map(key=>'<optgroup label="'+key[0].toUpperCase()+key.slice(1)+'">'+db[key].map(item=>'<option value="'+esc(item.id)+'">'+esc(item.nombre)+'</option>').join('')+'</optgroup>').join('');
+ const campos=publicacion?'<label class="wide">Título<input name="titulo" required maxlength="200"></label><label>Tipo<select name="tipo"><option>Artículo</option><option>Tesis</option></select></label><label>Año<input name="anio" type="number" min="1900" max="2100" required></label><label>Revista o congreso<select name="medio">'+optsMedio+'</select></label><label>Área de investigación<select name="area">'+options('areas','Sin área')+'</select></label><label class="wide">Resumen<textarea name="resumen" rows="3" maxlength="700"></textarea></label><div class="wide stack"><label>Buscar autores<input id="buscar-autores" type="search" placeholder="Escribe un nombre"></label><div class="matching" id="coincidencias"></div><div class="selected" id="seleccionados" aria-label="Autores seleccionados"></div></div>':'<label class="wide">Nombre<input name="nombre" required maxlength="150"></label>'+(group==='investigadores'?'<label class="wide">Universidad<select name="universidad" required>'+options('universidades','Selecciona una universidad')+'</select></label>':'');
+ app.innerHTML=hero('Gestión','Registra publicaciones y administra los catálogos académicos.')+'<div class="manage"><nav class="box side" aria-label="Tipos de registro">'+Object.entries(label).map(([key,text])=>'<a href="#gestion/'+key+'"'+(key===group?' aria-current="page"':'')+'>'+esc(text)+'</a>').join('')+'</nav><div class="stack"><section class="box"><h2>Registrar '+esc(label[group].toLocaleLowerCase('es'))+'</h2><form class="fields">'+campos+'<div class="wide"><button class="primary">Guardar registro</button></div><p class="wide status" role="status" id="estado"></p></form></section><section class="box"><h2>Registrados</h2><ul id="registrados"></ul></section></div></div>';
+ const form=app.querySelector('form');
+ const listar=()=>{app.querySelector('#registrados').innerHTML=db[group].map(item=>'<li>'+esc(item.nombre||item.titulo)+'</li>').join('');};
+ function autores(){
+  const texto=normal(app.querySelector('#buscar-autores').value.trim());
+  const coincidencias=app.querySelector('#coincidencias');
+  const elegidos=app.querySelector('#seleccionados');
+  coincidencias.replaceChildren();elegidos.replaceChildren();
+  function boton(id,agregar){
+   const b=document.createElement('button');b.type='button';b.className='secondary';b.textContent=nombre('investigadores',id)+(agregar?' · Agregar':' · Quitar');
+   b.onclick=()=>{if(agregar)selected.add(id);else selected.delete(id);autores();app.querySelector('#buscar-autores').focus();};return b;
+  }
+  if(texto){const found=db.investigadores.filter(p=>!selected.has(p.id)&&normal(p.nombre).includes(texto)).slice(0,8);coincidencias.append(...found.map(p=>boton(p.id,true)));if(!found.length)coincidencias.textContent='Sin coincidencias disponibles.';}
+  elegidos.append(...[...selected].map(id=>boton(id,false)));
+ }
+ if(publicacion)app.querySelector('#buscar-autores').addEventListener('input',autores);
+ form.onsubmit=event=>{
+  event.preventDefault();
+  const dato=Object.fromEntries(new FormData(form));
+  const estado=app.querySelector('#estado');
+  const campo=publicacion?'titulo':'nombre';
+  dato[campo]=dato[campo].trim();
+  if(!dato[campo]){estado.textContent='Ingresa un '+campo+' válido.';return;}
+  if(publicacion&&!selected.size){estado.textContent='Agrega al menos un autor.';return;}
+  if(publicacion)dato.autores=[...selected];
+  db[group].push({id:'demo-'+Date.now()+'-'+db[group].length,...dato});
+  form.reset();selected.clear();if(publicacion)autores();listar();estado.textContent='Registro guardado en el prototipo: '+dato[campo];
+ };
+ listar();
+}
+function render(){
+ const [seccion,id]=location.hash.slice(1).split('/');
+ const activa=['publicaciones','investigadores','gestion'].includes(seccion)?seccion:'publicaciones';
+ for(const a of document.querySelectorAll('.top nav a')){if(a.hash==='#'+activa)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');}
+ if(activa==='gestion')gestion(id);
+ else if(activa==='investigadores'){if(id)perfil(id);else directorio();}
+ else if(id)ficha(id);else catalogo();
+ window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',render);render();
+</script></body></html>

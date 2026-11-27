@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ágora · Catálogo científico</title>
+<link rel="stylesheet" href="/styles.css">
+<script src="/investigadores.js" defer></script>
+<script src="/publicaciones.js" defer></script>
+<script src="/gestion.js" defer></script>
+<script src="/entidades.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="shell"><span class="brand">Ágora</span><nav aria-label="Principal"><a href="#publicaciones">Publicaciones</a><a href="#investigadores">Investigadores</a><a href="#gestion">Gestión</a></nav></div></header>
+<main class="shell">
+<section id="vista-publicaciones" aria-labelledby="titulo-publicaciones" hidden>
+  <div class="hero">
+    <a id="volver-publicaciones" href="#publicaciones" hidden>← Volver a Publicaciones</a>
+    <h1 id="titulo-publicaciones" tabindex="-1">Publicaciones</h1>
+    <p id="subtitulo-publicaciones" class="muted"></p>
+  </div>
+  <div class="box filtros-publicaciones" id="filtros-publicaciones">
+    <label>Título <input id="buscar-publicacion" type="search" placeholder="Ej. sensores urbanos"></label>
+    <label>Tipo <select id="tipo-publicacion"><option value="">Todos los tipos</option><option value="articulo">Artículo</option><option value="tesis">Tesis</option></select></label>
+    <label>Universidad <select id="universidad-publicacion"><option value="">Todas las universidades</option></select></label>
+  </div>
+  <p id="estado-publicaciones" role="status"></p>
+  <div id="lista-publicaciones" class="lista-publicaciones"></div>
+  <div id="ficha-publicacion" class="grid columnas" hidden></div>
+</section>
+<section id="vista-investigadores" aria-labelledby="titulo" hidden>
+  <div class="hero">
+    <a id="volver" href="#investigadores" hidden>← Volver a Investigadores</a>
+    <h1 id="titulo" tabindex="-1">Investigadores</h1>
+    <p id="subtitulo" class="muted"></p>
+  </div>
+  <div class="box" id="filtro"><label>Nombre o universidad <input id="buscar" type="search" placeholder="Ej. Ana Torres"></label></div>
+  <p id="estado" role="status"></p>
+  <div id="directorio" class="grid"></div>
+  <div id="perfil" class="grid columnas" hidden>
+    <section class="box"><h2>Publicaciones</h2><ul id="publicaciones"></ul></section>
+    <section class="box"><h2>Colaboradores</h2><ul id="colaboradores"></ul></section>
+  </div>
+</section>
+<section id="vista-gestion" aria-labelledby="titulo-gestion" hidden>
+  <header class="hero">
+    <h1 id="titulo-gestion">Gestión</h1>
+    <p class="muted">Registra la producción científica y administra los catálogos académicos.</p>
+  </header>
+  <div class="gestion-distribucion">
+    <nav class="box gestion-menu" aria-label="Secciones de Gestión">
+      <a href="#gestion/publicaciones">Publicaciones</a>
+      <a href="#gestion/universidades">Universidades</a>
+      <a href="#gestion/investigadores">Investigadores</a>
+      <a href="#gestion/revistas">Revistas</a>
+      <a href="#gestion/congresos">Congresos</a>
+      <a href="#gestion/areas">Áreas de investigación</a>
+    </nav>
+    <section class="box" id="gestion-publicaciones" aria-labelledby="titulo-registro" hidden>
+    <h2 id="titulo-registro">Registrar publicación</h2>
+    <form id="registro" class="campos-gestion">
+      <label class="campo-ancho">Título <input id="titulo-publicacion" required maxlength="200"></label>
+      <label>Tipo <select id="tipo-registro"><option value="articulo">Artículo</option><option value="tesis">Tesis</option></select></label>
+      <label>Año <input id="anio-publicacion" type="number" min="1900" max="2100" step="1" required></label>
+      <label>Revista o congreso <select id="medio-publicacion"><option value="">Sin medio registrado</option></select></label>
+      <label>Área de investigación <select id="area-publicacion"><option value="">Sin área registrada</option></select></label>
+      <p class="campo-ancho muted" id="estado-metadatos" role="status" hidden></p>
+      <label class="campo-ancho">Resumen <textarea id="resumen-publicacion" maxlength="700" rows="4"></textarea></label>
+      <fieldset class="campo-ancho">
+        <legend>Autores de la publicación</legend>
+        <p class="instruccion-autores" id="instruccion-autores">Agrega a las personas que figuran como autoras en el documento original. Revisa su universidad si hay nombres iguales.</p>
+        <label for="buscar-autores">Buscar por nombre</label>
+        <input id="buscar-autores" type="search" maxlength="150" autocomplete="off" placeholder="Ej. Ana Torres" aria-describedby="instruccion-autores estado-autores">
+        <p id="estado-autores" role="status"></p>
+        <ul id="resultados-autores" class="resultados-autores" aria-label="Resultados de autores"></ul>
+        <p class="etiqueta-autores">Autores seleccionados</p>
+        <ul id="autores-publicacion" class="autores-seleccionados"></ul>
+      </fieldset>
+      <div class="campo-ancho"><button id="guardar-publicacion" disabled>Guardar publicación</button></div>
+    </form>
+    <p id="estado-registro" role="status"></p>
+    <a id="ver-publicacion-registrada" hidden>Ver publicación registrada</a>
+    </section>
+    <section class="box" id="gestion-universidades" aria-labelledby="titulo-registro-universidad" hidden>
+      <h2 id="titulo-registro-universidad">Registrar universidad</h2>
+      <form class="campos-gestion" id="registro-universidad">
+        <label class="campo-ancho">Nombre de la universidad <input name="nombre" required maxlength="150"></label>
+        <div class="campo-ancho"><button class="accion-gestion">Guardar universidad</button></div>
+      </form>
+      <p class="estado-gestion" role="status"></p>
+      <a id="registrar-afiliado" href="#gestion/investigadores" hidden>Registrar investigador de esta universidad</a>
+    </section>
+    <section class="box" id="gestion-investigadores" aria-labelledby="titulo-registro-investigador" hidden>
+      <h2 id="titulo-registro-investigador">Registrar investigador</h2>
+      <form class="campos-gestion" id="registro-investigador">
+        <label class="campo-ancho">Nombre del investigador <input name="nombre" required maxlength="150"></label>
+        <label class="campo-ancho">Universidad <select name="universidad" required><option value="">Selecciona una universidad</option></select></label>
+        <div class="campo-ancho"><button class="accion-gestion" disabled>Guardar investigador</button></div>
+      </form>
+      <p class="estado-gestion" role="status"></p>
+      <a id="ver-investigador-registrado" hidden>Ver perfil del investigador</a>
+    </section>
+    <section class="box" id="gestion-revistas" hidden>
+      <h2>Registrar una revista</h2>
+      <form class="campos-gestion" id="registro-revistas">
+        <label class="campo-ancho">Nombre <input name="nombre" required maxlength="150"></label>
+        <div class="campo-ancho"><button class="accion-gestion">Guardar revista</button></div>
+      </form>
+      <p class="estado-gestion" role="status"></p>
+    </section>
+    <section class="box" id="gestion-congresos" hidden>
+      <h2>Registrar un congreso</h2>
+      <form class="campos-gestion" id="registro-congresos">
+        <label class="campo-ancho">Nombre <input name="nombre" required maxlength="150"></label>
+        <div class="campo-ancho"><button class="accion-gestion">Guardar congreso</button></div>
+      </form>
+      <p class="estado-gestion" role="status"></p>
+    </section>
+    <section class="box" id="gestion-areas" hidden>
+      <h2>Registrar un área de investigación</h2>
+      <form class="campos-gestion" id="registro-areas">
+        <label class="campo-ancho">Nombre <input name="nombre" required maxlength="150"></label>
+        <div class="campo-ancho"><button class="accion-gestion">Guardar área de investigación</button></div>
+      </form>
+      <p class="estado-gestion" role="status"></p>
+    </section>
+  </div>
+</section>
+</main>
+</body>
+</html>

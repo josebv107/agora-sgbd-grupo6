@@ -1,0 +1,567 @@
+{
+  "fecha": "2026-11-27T03:53:58.985Z",
+  "entorno": {
+    "sistema": "win32 10.0.26300",
+    "cpu": "Intel(R) Core(TM) i7-6600U CPU @ 2.60GHz",
+    "ramGiB": 15.9,
+    "node": "v26.13.1",
+    "arangoDB": "3.12.14"
+  },
+  "repeticiones": 20,
+  "calentamiento": 3,
+  "unidad": "milisegundos",
+  "escenarios": [
+    {
+      "base": "agora_bench_1000",
+      "conteos": {
+        "universidades": 10,
+        "investigadores": 100,
+        "publicaciones": 1000,
+        "afiliaciones": 100,
+        "autorias": 2000
+      },
+      "resultados": [
+        {
+          "consulta": "Por investigador",
+          "filas": 20,
+          "p50Ms": 4.567200000000014,
+          "p95Ms": 5.9196999999999775,
+          "muestras": [
+            {
+              "latenciaMs": 6.431600000000003,
+              "tiempoAqlMs": 1.842699999542674
+            },
+            {
+              "latenciaMs": 5.9196999999999775,
+              "tiempoAqlMs": 1.9780000002356246
+            },
+            {
+              "latenciaMs": 4.776399999999967,
+              "tiempoAqlMs": 1.4155999997456092
+            },
+            {
+              "latenciaMs": 4.419500000000028,
+              "tiempoAqlMs": 1.1551999996299855
+            },
+            {
+              "latenciaMs": 4.639999999999986,
+              "tiempoAqlMs": 1.3539999999920838
+            },
+            {
+              "latenciaMs": 4.474899999999991,
+              "tiempoAqlMs": 1.4026999997440726
+            },
+            {
+              "latenciaMs": 4.702200000000005,
+              "tiempoAqlMs": 1.5012000003480352
+            },
+            {
+              "latenciaMs": 4.391200000000026,
+              "tiempoAqlMs": 1.3159999980416615
+            },
+            {
+              "latenciaMs": 4.567200000000014,
+              "tiempoAqlMs": 1.394599999912316
+            },
+            {
+              "latenciaMs": 4.519499999999994,
+              "tiempoAqlMs": 1.5395000009448268
+            },
+            {
+              "latenciaMs": 4.3636000000000195,
+              "tiempoAqlMs": 1.2600999980350025
+            },
+            {
+              "latenciaMs": 4.1965000000000146,
+              "tiempoAqlMs": 1.1680000025080517
+            },
+            {
+              "latenciaMs": 4.679100000000005,
+              "tiempoAqlMs": 1.4119000006758142
+            },
+            {
+              "latenciaMs": 4.658299999999997,
+              "tiempoAqlMs": 1.4616999978898093
+            },
+            {
+              "latenciaMs": 5.36220000000003,
+              "tiempoAqlMs": 1.6150000010384247
+            },
+            {
+              "latenciaMs": 3.8606999999999516,
+              "tiempoAqlMs": 1.1345999992045108
+            },
+            {
+              "latenciaMs": 4.479300000000023,
+              "tiempoAqlMs": 1.2009000020043459
+            },
+            {
+              "latenciaMs": 4.064999999999998,
+              "tiempoAqlMs": 1.1209999975108076
+            },
+            {
+              "latenciaMs": 4.580000000000041,
+              "tiempoAqlMs": 1.2054999970132485
+            },
+            {
+              "latenciaMs": 5.0464000000000055,
+              "tiempoAqlMs": 1.2826999991375487
+            }
+          ]
+        },
+        {
+          "consulta": "Por universidad",
+          "filas": 190,
+          "p50Ms": 7.920100000000048,
+          "p95Ms": 14.180800000000033,
+          "muestras": [
+            {
+              "latenciaMs": 21.364100000000008,
+              "tiempoAqlMs": 13.865799999621231
+            },
+            {
+              "latenciaMs": 14.180800000000033,
+              "tiempoAqlMs": 9.42639999993844
+            },
+            {
+              "latenciaMs": 10.680200000000013,
+              "tiempoAqlMs": 6.863899998279521
+            },
+            {
+              "latenciaMs": 7.779600000000016,
+              "tiempoAqlMs": 4.411899997649016
+            },
+            {
+              "latenciaMs": 9.333900000000028,
+              "tiempoAqlMs": 5.778200000349898
+            },
+            {
+              "latenciaMs": 9.099599999999953,
+              "tiempoAqlMs": 4.03550000191899
+            },
+            {
+              "latenciaMs": 11.54239999999993,
+              "tiempoAqlMs": 7.1392999998352025
+            },
+            {
+              "latenciaMs": 8.882299999999987,
+              "tiempoAqlMs": 4.714999999123393
+            },
+            {
+              "latenciaMs": 8.47219999999993,
+              "tiempoAqlMs": 5.030099997384241
+            },
+            {
+              "latenciaMs": 7.4909999999999854,
+              "tiempoAqlMs": 4.26540000262321
+            },
+            {
+              "latenciaMs": 7.295399999999972,
+              "tiempoAqlMs": 4.220299997541588
+            },
+            {
+              "latenciaMs": 7.5685000000000855,
+              "tiempoAqlMs": 4.235500000504544
+            },
+            {
+              "latenciaMs": 9.087300000000027,
+              "tiempoAqlMs": 5.596099999820581
+            },
+            {
+              "latenciaMs": 7.601600000000076,
+              "tiempoAqlMs": 4.3077000009361655
+            },
+            {
+              "latenciaMs": 6.966300000000047,
+              "tiempoAqlMs": 3.9735999998811167
+            },
+            {
+              "latenciaMs": 6.956999999999994,
+              "tiempoAqlMs": 4.132800000661518
+            },
+            {
+              "latenciaMs": 9.066900000000032,
+              "tiempoAqlMs": 5.210600000282284
+            },
+            {
+              "latenciaMs": 7.692900000000009,
+              "tiempoAqlMs": 4.316599999583559
+            },
+            {
+              "latenciaMs": 7.920100000000048,
+              "tiempoAqlMs": 4.555399998935172
+            },
+            {
+              "latenciaMs": 7.134400000000028,
+              "tiempoAqlMs": 4.062400003022049
+            }
+          ]
+        },
+        {
+          "consulta": "Coautoría",
+          "filas": 20,
+          "p50Ms": 6.40179999999998,
+          "p95Ms": 7.92999999999995,
+          "muestras": [
+            {
+              "latenciaMs": 6.381099999999947,
+              "tiempoAqlMs": 3.1748999972478487
+            },
+            {
+              "latenciaMs": 6.074299999999994,
+              "tiempoAqlMs": 2.911600000516046
+            },
+            {
+              "latenciaMs": 7.031500000000051,
+              "tiempoAqlMs": 3.648499998234911
+            },
+            {
+              "latenciaMs": 6.149200000000064,
+              "tiempoAqlMs": 2.996899998834124
+            },
+            {
+              "latenciaMs": 5.957400000000007,
+              "tiempoAqlMs": 2.8526999994937796
+            },
+            {
+              "latenciaMs": 6.488299999999981,
+              "tiempoAqlMs": 3.117000000202097
+            },
+            {
+              "latenciaMs": 6.320600000000013,
+              "tiempoAqlMs": 3.0847999987599906
+            },
+            {
+              "latenciaMs": 6.40179999999998,
+              "tiempoAqlMs": 3.075099997658981
+            },
+            {
+              "latenciaMs": 6.897100000000023,
+              "tiempoAqlMs": 3.8132000008772593
+            },
+            {
+              "latenciaMs": 6.323499999999967,
+              "tiempoAqlMs": 2.9496999995899387
+            },
+            {
+              "latenciaMs": 6.464099999999917,
+              "tiempoAqlMs": 3.0173000013746787
+            },
+            {
+              "latenciaMs": 7.676600000000008,
+              "tiempoAqlMs": 3.944500000216067
+            },
+            {
+              "latenciaMs": 7.92999999999995,
+              "tiempoAqlMs": 4.647400000976631
+            },
+            {
+              "latenciaMs": 5.750300000000038,
+              "tiempoAqlMs": 2.8961999996681698
+            },
+            {
+              "latenciaMs": 8.908900000000017,
+              "tiempoAqlMs": 5.522799998288974
+            },
+            {
+              "latenciaMs": 6.774300000000039,
+              "tiempoAqlMs": 3.4713999993982725
+            },
+            {
+              "latenciaMs": 6.729100000000017,
+              "tiempoAqlMs": 4.070399998454377
+            },
+            {
+              "latenciaMs": 5.785499999999956,
+              "tiempoAqlMs": 2.8239999992365483
+            },
+            {
+              "latenciaMs": 6.694499999999948,
+              "tiempoAqlMs": 3.6236999985703733
+            },
+            {
+              "latenciaMs": 6.076400000000035,
+              "tiempoAqlMs": 3.027399998245528
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "base": "agora_bench_10000",
+      "conteos": {
+        "universidades": 10,
+        "investigadores": 1000,
+        "publicaciones": 10000,
+        "afiliaciones": 1000,
+        "autorias": 20000
+      },
+      "resultados": [
+        {
+          "consulta": "Por investigador",
+          "filas": 20,
+          "p50Ms": 4.183100000000195,
+          "p95Ms": 4.627900000000409,
+          "muestras": [
+            {
+              "latenciaMs": 4.295799999999872,
+              "tiempoAqlMs": 1.388500000757631
+            },
+            {
+              "latenciaMs": 4.546200000000226,
+              "tiempoAqlMs": 1.4125000016065314
+            },
+            {
+              "latenciaMs": 4.627900000000409,
+              "tiempoAqlMs": 1.4979000006860588
+            },
+            {
+              "latenciaMs": 3.8809000000001106,
+              "tiempoAqlMs": 1.152200002252357
+            },
+            {
+              "latenciaMs": 4.065000000000055,
+              "tiempoAqlMs": 1.1986999998043757
+            },
+            {
+              "latenciaMs": 3.992500000000291,
+              "tiempoAqlMs": 1.1718999994627666
+            },
+            {
+              "latenciaMs": 4.16840000000002,
+              "tiempoAqlMs": 1.2289999976928812
+            },
+            {
+              "latenciaMs": 4.534500000000207,
+              "tiempoAqlMs": 1.629099999263417
+            },
+            {
+              "latenciaMs": 4.640300000000025,
+              "tiempoAqlMs": 1.6201999969780445
+            },
+            {
+              "latenciaMs": 4.217799999999897,
+              "tiempoAqlMs": 1.3228999996499624
+            },
+            {
+              "latenciaMs": 4.1203999999997905,
+              "tiempoAqlMs": 1.260999997612089
+            },
+            {
+              "latenciaMs": 4.131800000000112,
+              "tiempoAqlMs": 1.288299998122966
+            },
+            {
+              "latenciaMs": 4.565100000000257,
+              "tiempoAqlMs": 1.4259999989008065
+            },
+            {
+              "latenciaMs": 4.33219999999983,
+              "tiempoAqlMs": 1.5358000018750317
+            },
+            {
+              "latenciaMs": 4.128900000000158,
+              "tiempoAqlMs": 1.330200000666082
+            },
+            {
+              "latenciaMs": 4.183100000000195,
+              "tiempoAqlMs": 1.1037000003852881
+            },
+            {
+              "latenciaMs": 3.954400000000078,
+              "tiempoAqlMs": 1.0914000013144687
+            },
+            {
+              "latenciaMs": 3.996299999999792,
+              "tiempoAqlMs": 1.319599999987986
+            },
+            {
+              "latenciaMs": 4.548700000000281,
+              "tiempoAqlMs": 1.748599999700673
+            },
+            {
+              "latenciaMs": 4.399699999999939,
+              "tiempoAqlMs": 1.4663000001746695
+            }
+          ]
+        },
+        {
+          "consulta": "Por universidad",
+          "filas": 1900,
+          "p50Ms": 45.131700000000365,
+          "p95Ms": 51.98190000000022,
+          "muestras": [
+            {
+              "latenciaMs": 44.38969999999972,
+              "tiempoAqlMs": 34.26649999892106
+            },
+            {
+              "latenciaMs": 43.77299999999968,
+              "tiempoAqlMs": 34.246200000779936
+            },
+            {
+              "latenciaMs": 46.021400000000085,
+              "tiempoAqlMs": 35.57489900049404
+            },
+            {
+              "latenciaMs": 46.23230000000012,
+              "tiempoAqlMs": 35.7557999996061
+            },
+            {
+              "latenciaMs": 49.48409999999967,
+              "tiempoAqlMs": 33.237200001167366
+            },
+            {
+              "latenciaMs": 48.28859999999986,
+              "tiempoAqlMs": 38.064599997596815
+            },
+            {
+              "latenciaMs": 48.06399999999985,
+              "tiempoAqlMs": 36.39889899932314
+            },
+            {
+              "latenciaMs": 75.60530000000017,
+              "tiempoAqlMs": 65.08619999658549
+            },
+            {
+              "latenciaMs": 45.131700000000365,
+              "tiempoAqlMs": 35.24960000140709
+            },
+            {
+              "latenciaMs": 44.95270000000028,
+              "tiempoAqlMs": 35.34249899894348
+            },
+            {
+              "latenciaMs": 49.65650000000005,
+              "tiempoAqlMs": 35.586700003477745
+            },
+            {
+              "latenciaMs": 44.532900000000154,
+              "tiempoAqlMs": 33.67379999690456
+            },
+            {
+              "latenciaMs": 51.98190000000022,
+              "tiempoAqlMs": 41.78990000218619
+            },
+            {
+              "latenciaMs": 43.64969999999994,
+              "tiempoAqlMs": 34.36409999994794
+            },
+            {
+              "latenciaMs": 44.015300000000025,
+              "tiempoAqlMs": 34.51840000343509
+            },
+            {
+              "latenciaMs": 42.55309999999963,
+              "tiempoAqlMs": 33.10140000030515
+            },
+            {
+              "latenciaMs": 43.1857,
+              "tiempoAqlMs": 33.370799999829615
+            },
+            {
+              "latenciaMs": 45.41190000000006,
+              "tiempoAqlMs": 35.86170000198763
+            },
+            {
+              "latenciaMs": 44.96419999999989,
+              "tiempoAqlMs": 35.1355999991938
+            },
+            {
+              "latenciaMs": 46.5014000000001,
+              "tiempoAqlMs": 36.663599999883445
+            }
+          ]
+        },
+        {
+          "consulta": "Coautoría",
+          "filas": 20,
+          "p50Ms": 6.128200000000106,
+          "p95Ms": 6.800999999999931,
+          "muestras": [
+            {
+              "latenciaMs": 6.151800000000094,
+              "tiempoAqlMs": 2.9407000001810957
+            },
+            {
+              "latenciaMs": 6.2401999999997315,
+              "tiempoAqlMs": 3.1947989991749637
+            },
+            {
+              "latenciaMs": 7.550299999999879,
+              "tiempoAqlMs": 4.4030999997630715
+            },
+            {
+              "latenciaMs": 6.346700000000055,
+              "tiempoAqlMs": 3.1421000021509826
+            },
+            {
+              "latenciaMs": 6.128200000000106,
+              "tiempoAqlMs": 2.9401000028883573
+            },
+            {
+              "latenciaMs": 5.806800000000294,
+              "tiempoAqlMs": 2.7990999988105614
+            },
+            {
+              "latenciaMs": 6.108600000000024,
+              "tiempoAqlMs": 3.2697999995434657
+            },
+            {
+              "latenciaMs": 6.556700000000092,
+              "tiempoAqlMs": 3.49139999889303
+            },
+            {
+              "latenciaMs": 5.653600000000097,
+              "tiempoAqlMs": 2.796299999317853
+            },
+            {
+              "latenciaMs": 6.266299999999774,
+              "tiempoAqlMs": 3.1758999975863844
+            },
+            {
+              "latenciaMs": 5.94360000000006,
+              "tiempoAqlMs": 2.778900001430884
+            },
+            {
+              "latenciaMs": 6.016700000000128,
+              "tiempoAqlMs": 3.131600002234336
+            },
+            {
+              "latenciaMs": 6.800999999999931,
+              "tiempoAqlMs": 3.7904999990132637
+            },
+            {
+              "latenciaMs": 6.078500000000076,
+              "tiempoAqlMs": 3.201699997589458
+            },
+            {
+              "latenciaMs": 5.773000000000138,
+              "tiempoAqlMs": 2.897599999414524
+            },
+            {
+              "latenciaMs": 6.7771999999999935,
+              "tiempoAqlMs": 3.6429000028874725
+            },
+            {
+              "latenciaMs": 6.053100000000086,
+              "tiempoAqlMs": 3.0235999984142836
+            },
+            {
+              "latenciaMs": 6.205500000000029,
+              "tiempoAqlMs": 2.936799999588402
+            },
+            {
+              "latenciaMs": 6.6865999999999985,
+              "tiempoAqlMs": 3.526899999997113
+            },
+            {
+              "latenciaMs": 6.016900000000078,
+              "tiempoAqlMs": 2.9447000015352387
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
